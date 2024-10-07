@@ -19,22 +19,33 @@
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            margin: auto;
         }
         label {
             display: block;
             margin-bottom: 5px;
+            font-weight: bold;
         }
-        input, select, textarea {
-            width: 100%;
-            padding: 10px;
+        .form-group {
+            display: flex;
+            align-items: center;
             margin-bottom: 15px;
+        }
+        .form-group input[type="text"],
+        .form-group select,
+        .form-group textarea {
+            flex: 1;
+            padding: 10px;
+            margin-left: 10px; /* Space between label and input */
             border: 1px solid #ced4da;
             border-radius: 4px;
+            box-sizing: border-box;
         }
         .checkbox-label {
             display: flex;
             align-items: center;
-            margin-bottom: 10px; /* Adjusted for better spacing */
+            margin-bottom: 10px;
         }
         .checkbox-label input {
             margin-right: 10px; /* Space between checkbox and label */
@@ -46,6 +57,7 @@
             padding: 10px 15px;
             border-radius: 5px;
             cursor: pointer;
+            width: 100%;
         }
         button:hover {
             background-color: #0056b3;
@@ -64,45 +76,58 @@
 
 <h1>Healthcare Facility Hiring Survey</h1>
 
-<p><strong>Entry-level positions</strong> in healthcare typically do not require advanced degrees or extensive work experience. They are ideal for candidates who have recently completed secondary education or short-term training programs and are seeking to start their career in healthcare. These roles often support clinical and administrative operations in healthcare settings.</p>
-
 <form action="https://formspree.io/f/xgvewywq" method="POST">
     <h2>Section 1: Facility Information</h2>
-    <label for="facilityType">1. Type of Facility:</label>
-    <select id="facilityType" name="facilityType" required>
-        <option value="">Select...</option>
-        <option>Private</option>
-        <option>Public</option>
-        <option>Non-profit</option>
-        <option>Other (please specify)</option>
-    </select>
-    <input type="text" name="otherFacilityType" placeholder="Please specify..." aria-label="Other facility type">
+    
+    <div class="form-group">
+        <label for="facilityType">1. Type of Facility:</label>
+        <select id="facilityType" name="facilityType" required>
+            <option value="">Select...</option>
+            <option>Private</option>
+            <option>Public</option>
+            <option>Non-profit</option>
+            <option>Other (please specify)</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <input type="text" name="otherFacilityType" placeholder="Please specify..." aria-label="Other facility type">
+    </div>
 
-    <label for="city">2. Location of Facility - City:</label>
-    <input type="text" id="city" name="city" placeholder="City" required aria-label="City">
+    <div class="form-group">
+        <label for="city">2. Location of Facility - City:</label>
+        <input type="text" id="city" name="city" placeholder="City" required aria-label="City">
+    </div>
 
-    <label for="region">Region:</label>
-    <input type="text" id="region" name="region" placeholder="Region" required aria-label="Region">
+    <div class="form-group">
+        <label for="region">Region:</label>
+        <input type="text" id="region" name="region" placeholder="Region" required aria-label="Region">
+    </div>
 
-    <label for="size">3. Size of Facility (Number of Employees):</label>
-    <select id="size" name="size" required>
-        <option value="">Select...</option>
-        <option>Fewer than 50</option>
-        <option>50-100</option>
-        <option>100-500</option>
-        <option>More than 500</option>
-    </select>
+    <div class="form-group">
+        <label for="size">3. Size of Facility (Number of Employees):</label>
+        <select id="size" name="size" required>
+            <option value="">Select...</option>
+            <option>Fewer than 50</option>
+            <option>50-100</option>
+            <option>100-500</option>
+            <option>More than 500</option>
+        </select>
+    </div>
 
-    <label for="entryLevelPositions">4. Number of Entry-Level Positions Currently Employed:</label>
-    <select id="entryLevelPositions" name="entryLevelPositions" required>
-        <option value="">Select...</option>
-        <option>0-10</option>
-        <option>11-20</option>
-        <option>21-50</option>
-        <option>More than 50</option>
-    </select>
+    <div class="form-group">
+        <label for="entryLevelPositions">4. Number of Entry-Level Positions Currently Employed:</label>
+        <select id="entryLevelPositions" name="entryLevelPositions" required>
+            <option value="">Select...</option>
+            <option>0-10</option>
+            <option>11-20</option>
+            <option>21-50</option>
+            <option>More than 50</option>
+        </select>
+    </div>
 
     <h2>Section 2: Hiring Needs for Entry-Level Jobs</h2>
+    
     <label>5. Entry-level healthcare positions you are hiring (select all that apply):</label>
     <div class="checkbox-label">
         <input type="checkbox" name="positions[]" value="Phlebotomist"> Phlebotomist
@@ -178,26 +203,31 @@
         <input type="text" name="otherFactors" placeholder="Please specify..." aria-label="Other factors">
     </div>
 
-    <label for="plannedHiring">7. Planned hiring for entry-level jobs (next 12 months):</label>
-    <select id="plannedHiring" name="plannedHiring" required>
-        <option value="">Select...</option>
-        <option>0-5</option>
-        <option>6-10</option>
-        <option>11-20</option>
-        <option>More than 20</option>
-    </select>
+    <div class="form-group">
+        <label for="plannedHiring">7. Planned hiring for entry-level jobs (next 12 months):</label>
+        <select id="plannedHiring" name="plannedHiring" required>
+            <option value="">Select...</option>
+            <option>0-5</option>
+            <option>6-10</option>
+            <option>11-20</option>
+            <option>More than 20</option>
+        </select>
+    </div>
 
     <h2>Section 3: Qualifications and Skills</h2>
-    <label>8. Minimum qualifications required:</label>
-    <select name="minimumQualifications" required>
-        <option value="">Select...</option>
-        <option>High school diploma</option>
-        <option>Short-term certificate (4-12 weeks)</option>
-        <option>Technical/vocational training</option>
-        <option>Associate's degree</option>
-        <option>Bachelor's degree</option>
-        <option>Other (please specify)</option>
-    </select>
+    
+    <div class="form-group">
+        <label>8. Minimum qualifications required:</label>
+        <select name="minimumQualifications" required>
+            <option value="">Select...</option>
+            <option>High school diploma</option>
+            <option>Short-term certificate (4-12 weeks)</option>
+            <option>Technical/vocational training</option>
+            <option>Associate's degree</option>
+            <option>Bachelor's degree</option>
+            <option>Other (please specify)</option>
+        </select>
+    </div>
     <input type="text" name="otherQualifications" placeholder="Please specify..." aria-label="Other qualifications">
 
     <label>9. Most important skills for entry-level workers:</label>
@@ -220,23 +250,28 @@
         <input type="checkbox" name="skills[]" value="Electronic Health Record (EHR) usage"> Electronic Health Record (EHR) usage
     </div>
 
-    <label>10. Willing to hire workers with relevant training but no experience?</label>
-    <select name="willingToHire" required>
-        <option value="">Select...</option>
-        <option>Yes</option>
-        <option>No</option>
-        <option>Maybe (depends on the role)</option>
-    </select>
+    <div class="form-group">
+        <label>10. Willing to hire workers with relevant training but no experience?</label>
+        <select name="willingToHire" required>
+            <option value="">Select...</option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>Maybe (depends on the role)</option>
+        </select>
+    </div>
 
     <h2>Section 4: Training and Development for Staff</h2>
-    <label>11. Provide training programs for existing staff?</label>
-    <select name="trainingPrograms" required>
-        <option value="">Select...</option>
-        <option>Yes, regularly</option>
-        <option>Yes, occasionally</option>
-        <option>No, but we would like to</option>
-        <option>No, not required</option>
-    </select>
+    
+    <div class="form-group">
+        <label>11. Provide training programs for existing staff?</label>
+        <select name="trainingPrograms" required>
+            <option value="">Select...</option>
+            <option>Yes, regularly</option>
+            <option>Yes, occasionally</option>
+            <option>No, but we would like to</option>
+            <option>No, not required</option>
+        </select>
+    </div>
 
     <label>12. Training areas for non-healthcare staff:</label>
     <div class="checkbox-label">
@@ -289,28 +324,33 @@
         <input type="text" name="otherTrainingHealthcare" placeholder="Please specify..." aria-label="Other training healthcare">
     </div>
 
-    <label>14. Interested in external training providers?</label>
-    <select name="externalTrainingProviders" required>
-        <option value="">Select...</option>
-        <option>Yes</option>
-        <option>No</option>
-        <option>Maybe (depends on cost and content)</option>
-    </select>
+    <div class="form-group">
+        <label>14. Interested in external training providers?</label>
+        <select name="externalTrainingProviders" required>
+            <option value="">Select...</option>
+            <option>Yes</option>
+            <option>No</option>
+            <option>Maybe (depends on cost and content)</option>
+        </select>
+    </div>
 
     <h2>Section 5: Salary and Compensation</h2>
-    <label>15. Typical starting salary for entry-level positions:</label>
-    <select name="startingSalary" required>
-        <option value="">Select...</option>
-        <option>Less than 5,000 ETB</option>
-        <option>5,000-7,000 ETB</option>
-        <option>7,000-10,000 ETB</option>
-        <option>10,000-12,000 ETB</option>
-        <option>12,000-15,000 ETB</option>
-        <option>15,000-20,000 ETB</option>
-        <option>20,000-30,000 ETB</option>
-        <option>30,000-50,000 ETB</option>
-        <option>More than 50,000 ETB</option>
-    </select>
+    
+    <div class="form-group">
+        <label>15. Typical starting salary for entry-level positions:</label>
+        <select name="startingSalary" required>
+            <option value="">Select...</option>
+            <option>Less than 5,000 ETB</option>
+            <option>5,000-7,000 ETB</option>
+            <option>7,000-10,000 ETB</option>
+            <option>10,000-12,000 ETB</option>
+            <option>12,000-15,000 ETB</option>
+            <option>15,000-20,000 ETB</option>
+            <option>20,000-30,000 ETB</option>
+            <option>30,000-50,000 ETB</option>
+            <option>More than 50,000 ETB</option>
+        </select>
+    </div>
 
     <label>16. Additional benefits offered:</label>
     <div class="checkbox-label">
@@ -337,47 +377,38 @@
     </div>
 
     <h2>Section 6: Future Hiring Needs and Expectations</h2>
-    <label>17. Anticipated future demand for entry-level healthcare workers:</label>
-    <select name="futureDemand" required>
-        <option value="">Select...</option>
-        <option>Yes, significant increase</option>
-        <option>Yes, slight increase</option>
-        <option>No, stay the same</option>
-        <option>No, decrease</option>
-    </select>
+    
+    <div class="form-group">
+        <label>17. Anticipated future demand for entry-level healthcare workers:</label>
+        <select name="futureDemand" required>
+            <option value="">Select...</option>
+            <option>Yes, significant increase</option>
+            <option>Yes, slight increase</option>
+            <option>No, stay the same</option>
+            <option>No, decrease</option>
+        </select>
+    </div>
 
-    <label for="futureHiringTitles">18. Future entry-level positions your facility expects to hire for (please specify job titles and approximate numbers):</label>
-    <textarea id="futureHiringTitles" name="futureHiringTitles" rows="4" aria-label="Future hiring titles"></textarea>
+    <div class="form-group">
+        <label for="futureHiringTitles">18. Future entry-level positions your facility expects to hire for (please specify job titles and approximate numbers):</label>
+        <textarea id="futureHiringTitles" name="futureHiringTitles" rows="4" aria-label="Future hiring titles"></textarea>
+    </div>
 
-    <label for="expectedSalaryRanges">19. Expected salary ranges for future entry-level positions (please specify ranges for different job titles):</label>
-    <textarea id="expectedSalaryRanges" name="expectedSalaryRanges" rows="4" aria-label="Expected salary ranges"></textarea>
+    <div class="form-group">
+        <label for="expectedSalaryRanges">19. Expected salary ranges for future entry-level positions (please specify ranges for different job titles):</label>
+        <textarea id="expectedSalaryRanges" name="expectedSalaryRanges" rows="4" aria-label="Expected salary ranges"></textarea>
+    </div>
 
-    <label>20. Will future positions require new or additional qualifications or skills compared to current roles?</label>
-    <select name="newQualifications" required>
-        <option value="">Select...</option>
-        <option>Yes (please specify)</option>
-        <option>No</option>
-        <option>Not sure</option>
-    </select>
-    <input type="text" name="additionalQualifications" placeholder="Please specify..." aria-label="Additional qualifications">
+    <div class="form-group">
+        <label>20. Will future positions require new or additional qualifications or skills compared to current roles?</label>
+        <select name="newQualifications" required>
+            <option value="">Select...</option>
+            <option>Yes (please specify)</option>
+            <option>No</option>
+            <option>Not sure</option>
+        </select>
+        <input type="text" name="additionalQualifications" placeholder="Please specify..." aria-label="Additional qualifications">
+    </div>
 
-    <label>21. Will you consider expanding job opportunities for non-clinical staff in the future?</label>
-    <select name="expandOpportunities" required>
-        <option value="">Select...</option>
-        <option>Yes</option>
-        <option>No</option>
-        <option>Maybe</option>
-    </select>
-
-    <label for="prioritizeHiring">22. How would you prioritize hiring between healthcare and non-healthcare roles?</label>
-    <textarea id="prioritizeHiring" name="prioritizeHiring" rows="4" aria-label="Prioritize hiring"></textarea>
-
-    <h2>Section 7: Final Comments</h2>
-    <label for="additionalComments">23. Additional comments or suggestions:</label>
-    <textarea id="additionalComments" name="additionalComments" rows="4" aria-label="Additional comments"></textarea>
-
-    <button type="submit">Submit</button>
-</form>
-
-</body>
-</html>
+    <div class="form-group">
+        <label
